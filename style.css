@@ -2,4 +2,80 @@
   margin: 0;
   padding: 0;
   outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1e1e1e;
+  color: #e1e1e1;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 80vw;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin: 3rem 2rem;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: calc(25%-20px);
+  /* width: 25%; */
+  margin: 10px;
+  text-align: center;
+  padding: 20px;
+  background-color: #3d3d3d;
+  border-radius: 10px;
+}
+
+.card .title h2 {
+  padding: 0;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.card .img {
+  margin: 40px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background-color: #9dd465;
+}
+
+.card .img img {
+  max-width: 220px;
+}
+
+.card .type {
+  color: #1e1e1e;
+  border-radius: 10px;
+  padding: 16px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  letter-spacing: 4px;
+  background-color: #9dd465;
+}
+
+.card .favorite {
+  display: none;
+}
+
+@media screen and (max-width: 1244px) {
+  .card {
+    width: calc(50%-20px);
+  }
+}
+@media screen and (max-width: 768px) {
+}
+.card {
+  width: calc(50%-20px);
 }
