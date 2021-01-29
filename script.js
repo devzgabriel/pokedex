@@ -1,9 +1,55 @@
-const card = document.querySelector(".card")
-const cards = document.querySelector(".cards")
-for (let i = 0; i < 30; i++) {
-  const clone = card.cloneNode(true)
-  cards.appendChild(clone)
+const types = [
+  "fire ",
+  "grass ",
+  "eletric ",
+  "water ",
+  "ground ",
+  "rock ",
+  "fairy ",
+  "poison ",
+  "bug ",
+  "dragon ",
+  "psychic ",
+  "flying ",
+  "fighting ",
+  "normal ",
+]
+
+const POKEMON_COUNT = 12
+
+const getType = (data) => {
+  const apiTypes = data.map((type) => type.type.name)
+  let type = types.find((type) => apiTypes.indexOf(type) > -1)
+  if (!type) type = apiTypes[0]
+  // console.log(type)
+  return type
 }
+
+const fetchPokemon = async (number) => {
+  const url = `https://pokeapi.co/api/v2/pokemon/${number}`
+  const response = await fetch(url).then((response) => response.json())
+  const { id, name, types } = response
+  const type = getType(types)
+  // console.log(id, name, type)
+  return { id, name, type }
+}
+
+const fetchPokemons = async () => {
+  for (let i = 1; i <= POKEMON_COUNT; i++) {
+    console.log(i)
+    const pokemon = await fetchPokemon(i)
+    console.log(pokemon)
+  }
+}
+
+fetchPokemons()
+
+// const card = document.querySelector(".card")
+// const cards = document.querySelector(".cards")
+// for (let i = 0; i < 30; i++) {
+//   const clone = card.cloneNode(true)
+//   cards.appendChild(clone)
+// }
 
 // const colors={
 //   fire: '#e4604d',
