@@ -146,6 +146,7 @@ body {
 }
 .header {
   text-align: center;
+  padding: 2rem 0;
 }
 .cards {
   display: flex;
@@ -174,7 +175,7 @@ body {
   height: 220px;
   border-radius: 50%;
   background-size: 400% 400%;
-  background-position: 0 0;
+  background-position: 0 0%;
   animation: bg-out 300ms ease-in forwards 1;
 }
 .card:hover {
