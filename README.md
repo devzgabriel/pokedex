@@ -7,13 +7,9 @@
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-licença">Licença</a>
 </p>
-
+-->
 
 <br>
-
-<p align="center">
-  <img alt="pokedex" src=".github/pokedex.png" width="100%">
-</p> -->
 
 ## 🚀 Tecnologias
 
@@ -26,6 +22,12 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 💻 Projeto
 
 O Pokedex é uma aplicação que consome um API e lista todos os Pokemons!
+
+API utilizada: [http://pokeapi.co/](http://pokeapi.co/)
+
+<p align="center">
+  <img alt="pokedex" src=".github/pokedex.png" width="100%">
+</p>
 
 <!--
 ## :memo: Licença

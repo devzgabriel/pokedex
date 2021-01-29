@@ -14,7 +14,7 @@ const types = [
   "fighting",
   "normal",
 ]
-const POKEMON_COUNT = 30
+const POKEMON_COUNT = 100
 
 const cardHTML = `
 <div class="card" id="card-{id}">
