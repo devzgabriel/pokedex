@@ -11,7 +11,7 @@
   --card-bg: #3d3d3d;
   --fire: #e4604d;
   --grass: #9dd465;
-  --eletric: #f9e45f;
+  --electric: #f9e45f;
   --water: #6a83d6;
   --ground: #e4c967;
   --rock: #cabb7b;
@@ -40,11 +40,15 @@
   background-color: var(--grass);
 }
 
-.bg-eletric {
-  background: linear-gradient(to top right, var(--eletric), var(--card-bg) 25%);
+.bg-electric {
+  background: linear-gradient(
+    to top right,
+    var(--electric),
+    var(--card-bg) 25%
+  );
 }
-.eletric {
-  background-color: var(--eletric);
+.electric {
+  background-color: var(--electric);
 }
 
 .bg-water {
@@ -137,77 +141,72 @@ body {
 }
 
 .container {
-  max-width: 80vw;
+  max-width: 1200px;
   margin: 0 auto;
 }
-
 .header {
   text-align: center;
-  margin: 3rem 2rem;
 }
-
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 }
-
 .card {
-  width: calc(25%-20px);
-  /* width: 25%; */
+  width: calc(25% - 20px);
   margin: 10px;
   text-align: center;
   padding: 20px;
-  background-color: var(--card-bg);
+  background-color: rgb(173, 172, 172);
   border-radius: 10px;
+  background-color: var(--card-bg);
 }
-
 .card .title h2 {
   padding: 0;
   margin: 0;
   text-transform: capitalize;
 }
-
+.card .img img {
+  max-width: 220px;
+}
 .card .img {
-  margin: 40px;
+  margin: 40px auto;
   width: 220px;
   height: 220px;
   border-radius: 50%;
   background-size: 400% 400%;
   background-position: 0 0;
-  animation: bg-out 300ms ease-in forwards;
+  animation: bg-out 300ms ease-in forwards 1;
 }
-
+.card:hover {
+  cursor: pointer;
+}
 .card:hover .img {
   animation: bg-in 300ms ease-in forwards 1;
 }
-
-.card .img img {
-  max-width: 220px;
-}
-
 .card .type {
   color: var(--body-bg);
   border-radius: 10px;
-  padding: 16px;
+  padding: 10px;
   text-transform: uppercase;
-  font-weight: bolder;
+  font-weight: bold;
   letter-spacing: 4px;
 }
-
+.card .type p {
+  margin: 0;
+}
 .card .favorite {
   display: none;
 }
 
 @media screen and (max-width: 1244px) {
   .card {
-    width: calc(50%-20px);
+    width: calc(50% - 20px);
   }
 }
 @media screen and (max-width: 768px) {
-}
-.card {
-  width: calc(50%-20px);
+  .card {
+    width: calc(100% - 20px);
+  }
 }
 
 @keyframes bg-in {

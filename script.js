@@ -1,41 +1,37 @@
 const types = [
-  "fire ",
-  "grass ",
-  "eletric ",
-  "water ",
-  "ground ",
-  "rock ",
-  "fairy ",
-  "poison ",
-  "bug ",
-  "dragon ",
-  "psychic ",
-  "flying ",
-  "fighting ",
-  "normal ",
+  "fire",
+  "grass",
+  "electric",
+  "water",
+  "ground",
+  "rock",
+  "fairy",
+  "poison",
+  "bug",
+  "dragon",
+  "psychic",
+  "flying",
+  "fighting",
+  "normal",
 ]
-
-const POKEMON_COUNT = 12
+const POKEMON_COUNT = 30
 
 const cardHTML = `
-  <div class="card" id="card-{id}">
-    <div class="title">
-      <h2>{name}</h2>
-      <small># {1}</small>
+<div class="card" id="card-{id}">
+<div class="title">
+    <h2>{name}</h2>
+    <small># {id}</small>
+</div>
+<div class="img bg-{type}">
+    <img src="https://pokeres.bastionbot.org/images/pokemon/{id}.png" alt="{name}">
+</div>
+<div class="type {type}">
+    <p>{type}</p>
+</div>
+<button hidden class="favorites" data-id={id}>
+    <div class="heart">
     </div>
-    <div class="img bg-{type}">
-      <img
-        src="https://pokeres.bastionbot.org/images/pokemon/{1}.png"
-        alt="Bubassauro"
-      />
-    </div>
-    <div class="type {type}">
-      <p>{type}</p>
-    </div>
-    <button onclick="" class="favorite" data-id-{id} >
-      <div class="heart"></div>
-    </button>
-  </div>
+</button>
 `
 
 const cards = document.querySelector(".cards")
@@ -44,6 +40,7 @@ const replacer = (text, source, destination) => {
   const regex = new RegExp(source, "gi")
   return text.replace(regex, destination)
 }
+
 const createPokemonCard = (pokemon) => {
   const { id, name, type } = pokemon
   let newCard = replacer(cardHTML, `\{id\}`, id)
@@ -54,27 +51,23 @@ const createPokemonCard = (pokemon) => {
 }
 
 const getType = (data) => {
-  const apiTypes = data.map((type) => type.type.name)
-  let type = types.find((type) => apiTypes.indexOf(type) > -1)
-  if (!type) type = apiTypes[0]
-  // console.log(type)
+  const apitypes = data.map((type) => type.type.name)
+  const type = types.find((type) => apitypes.indexOf(type) > -1)
   return type
 }
 
 const fetchPokemon = async (number) => {
+  if (number === undefined) return
   const url = `https://pokeapi.co/api/v2/pokemon/${number}`
   const response = await fetch(url).then((response) => response.json())
   const { id, name, types } = response
   const type = getType(types)
-  // console.log(id, name, type)
   return { id, name, type }
 }
 
 const fetchPokemons = async () => {
   for (let i = 1; i <= POKEMON_COUNT; i++) {
-    console.log(i)
     const pokemon = await fetchPokemon(i)
-    console.log(pokemon)
     createPokemonCard(pokemon)
   }
 }
