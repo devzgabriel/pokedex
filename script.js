@@ -17,6 +17,42 @@ const types = [
 
 const POKEMON_COUNT = 12
 
+const cardHTML = `
+  <div class="card" id="card-{id}">
+    <div class="title">
+      <h2>{name}</h2>
+      <small># {1}</small>
+    </div>
+    <div class="img bg-{type}">
+      <img
+        src="https://pokeres.bastionbot.org/images/pokemon/{1}.png"
+        alt="Bubassauro"
+      />
+    </div>
+    <div class="type {type}">
+      <p>{type}</p>
+    </div>
+    <button onclick="" class="favorite" data-id-{id} >
+      <div class="heart"></div>
+    </button>
+  </div>
+`
+
+const cards = document.querySelector(".cards")
+
+const replacer = (text, source, destination) => {
+  const regex = new RegExp(source, "gi")
+  return text.replace(regex, destination)
+}
+const createPokemonCard = (pokemon) => {
+  const { id, name, type } = pokemon
+  let newCard = replacer(cardHTML, `\{id\}`, id)
+  newCard = replacer(newCard, `\{name\}`, name)
+  newCard = replacer(newCard, `\{type\}`, type)
+
+  cards.innerHTML += newCard
+}
+
 const getType = (data) => {
   const apiTypes = data.map((type) => type.type.name)
   let type = types.find((type) => apiTypes.indexOf(type) > -1)
@@ -39,6 +75,7 @@ const fetchPokemons = async () => {
     console.log(i)
     const pokemon = await fetchPokemon(i)
     console.log(pokemon)
+    createPokemonCard(pokemon)
   }
 }
 
